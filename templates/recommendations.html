@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recommended Movies and Books</h1>
+        <div class="recommendations">
+            <div>
+                <h2>Movies</h2>
+                <ul>
+                    {% if movies %}
+                        {% for movie in movies %}
+                            <li>{{ movie['title'] }} ({{ movie['genre'] }} - {{ movie['language'] }})</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No movies found matching your preferences.</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div>
+                <h2>Books</h2>
+                <ul>
+                    {% if books %}
+                        {% for book in books %}
+                            <li>{{ book['title'] }} ({{ book['genre'] }} - {{ book['language'] }})</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No books found matching your preferences.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <a href="/">Back to Survey</a>
+    </div>
+</body>
+</html>
